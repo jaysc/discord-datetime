@@ -1,5 +1,7 @@
 # Discord-DateTime
 
+Can be found here: [https://jaysc.github.io/discord-datetime/](https://jaysc.github.io/discord-datetime/)
+
 A very simple static page to help convert a date-time to the corresponding discord string.
 
 I expect discord will implement the full feature within the app in the future.

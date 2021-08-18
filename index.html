@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<body>
+    <div>
+        <h2>DateTime to discord string</h2>
+        <u><h3>This is based on your computer's timezone</h3></u>
+        <div>
+            <h3>Date and time</h3>
+            <input type="text" id="inputDate" size="30" placeholder="Please select Date Time" data-input>
+        </div>
+        <div>
+            <h3>Discord string</h3>
+            <input type="text" id="discordDate" size="30" readonly=true>
+        </div>
+        <button type="button" onclick="copyText()">Copy</button>
+    </div>
+</body>
+
+<script>
+    const inputDateElement = document.querySelector("#inputDate")
+    const discordDateElement = document.querySelector("#discordDate")
+    inputDateElement.value = "";
+    discordDateElement.value = "";
+
+    flatpickr(inputDate, {
+        enableTime: true,
+        dateFormat: "F, d Y H:i",
+        onChange: setDiscordDate,
+        inline: true
+    });
+
+    function setDiscordDate(dateTimeArray){
+        if (dateTimeArray){
+            discordDateElement.value = `<t:${dateTimeArray[0].getTime() / 1000}:F>`
+        }
+    }
+
+    function copyText(){
+        navigator.clipboard.writeText(discordDateElement.value);
+    }
+
+</script>
+
+</html>
